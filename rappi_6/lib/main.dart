@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'items.dart';
 
 void main() {
   runApp(const MyApp());
@@ -15,26 +14,29 @@ class MyApp extends StatelessWidget {
         //Comienza el andamiaje, la estructura de la App
         appBar: AppBar(
           //Acá comienza el Appbar
-          elevation: 0,
-          backgroundColor: const Color(
-              0xFF023047), //color de fondo, a mano, luego se puede integrar a flex_color
-          leading:
-              const Icon(Icons.person_2_outlined), // icono de ayuda al cliente
+          elevation: 1,
+          backgroundColor: Color.fromARGB(255, 255, 255,
+              255), //color de fondo, a mano, luego se puede integrar a flex_color
+          leading: const Icon(
+            Icons.person_2_outlined,
+            color: Color.fromARGB(255, 0, 0, 0),
+          ),
+          // icono de ayuda al cliente
           title: const Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(
                 'Juan Agustin Alcalde 2278,',
                 style: TextStyle(
-                  color: Color.fromARGB(255, 240, 239, 239),
-                  fontSize: 10,
-                  fontWeight: FontWeight.bold,
+                  color: Color.fromARGB(255, 0, 0, 0),
+                  fontSize: 12,
+                  fontFamily: 'Outfit',
                 ),
               ),
               Text(
                 '7630201 Vitacura',
                 style: TextStyle(
-                  color: Color.fromARGB(255, 255, 254, 254),
+                  color: Color.fromARGB(255, 0, 0, 0),
                   fontSize: 8,
                 ),
               ),
@@ -45,6 +47,7 @@ class MyApp extends StatelessWidget {
 
             IconButton(
               icon: const Icon(Icons.shopping_cart_outlined),
+              color: Color.fromARGB(255, 0, 0, 0),
               onPressed: () {
                 // Acción para el ícono "more_vert"
               },
@@ -57,11 +60,11 @@ class MyApp extends StatelessWidget {
             children: [
               Padding(
                 padding: const EdgeInsets.fromLTRB(
-                    16, 0, 16, 0), // margen para TextField
+                    20, 0, 20, 0), // margen para TextField
 
                 child: Container(
                   decoration: BoxDecoration(
-                    color: const Color.fromARGB(255, 178, 175, 175),
+                    color: const Color.fromARGB(255, 255, 255, 255),
                     borderRadius: BorderRadius.circular(15),
                   ),
                   margin: const EdgeInsets.all(8),
@@ -74,6 +77,9 @@ class MyApp extends StatelessWidget {
                             hintText: '¿Qué quieres hoy?',
                             border: InputBorder.none,
                           ),
+                          style: TextStyle(
+                              fontFamily: 'Outfit',
+                              color: Color.fromARGB(255, 0, 0, 0)),
                         ),
                       ),
                       SizedBox(width: 16),
@@ -87,26 +93,38 @@ class MyApp extends StatelessWidget {
                   ),
                 ),
               ),
-              const Divider(
-                //para separar del siguiente container, es horizontal
-                height: 8.0, //dos pixeles de alto
-                color: Color.fromARGB(255, 255, 255, 255), //color
-              ),
-              Row(
-                children: [
-                  Expanded(
-                    child: Padding(
-                      padding: const EdgeInsets.fromLTRB(25, 0, 35, 0),
-                      child: Container(
-                        height: 120.0,
-                        decoration: const BoxDecoration(
-                          color: Color.fromARGB(93, 188, 153, 83),
-                          borderRadius: BorderRadius.all(Radius.circular(15.0)),
-                        ),
+
+              Container(
+                padding: const EdgeInsets.fromLTRB(30, 8, 0,
+                    0), // 16 pixeles desde el borde izquierdo y 16 desde el derecho
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    SizedBox(
+                      height: 150,
+                      child: ListView.builder(
+                        scrollDirection:
+                            Axis.horizontal, // Scrolleable horizontalmente
+                        itemCount: 3, // Cambiado a 8 imágenes
+                        itemBuilder: (context, index) {
+                          return Container(
+                            width: 380,
+                            height: 150,
+                            margin: const EdgeInsets.only(
+                                right:
+                                    12), // Espacio de 12 píxeles entre las cajas
+                            child: ClipRRect(
+                              borderRadius: BorderRadius.circular(
+                                  16), // Bordes con border radius de 16
+                              child: Image.asset(
+                                  'assets/${index + 1}.jpg'), // Carga imágenes desde assets
+                            ),
+                          );
+                        },
                       ),
                     ),
-                  ),
-                ],
+                  ],
+                ),
               ),
               const Divider(
                 //para separar del siguiente container, es horizontal
@@ -114,139 +132,90 @@ class MyApp extends StatelessWidget {
                 color: Color.fromARGB(255, 255, 255, 255),
               ), //color
 
-              Row(
-                children: [
-                  Expanded(
-                    child: Padding(
-                      padding: const EdgeInsets.fromLTRB(25, 10, 0, 0),
-                      child: Container(
-                        height: 80.0,
-                        decoration: const BoxDecoration(
-                          color: Color.fromARGB(93, 188, 153, 83),
-                          borderRadius: BorderRadius.all(Radius.circular(10.0)),
-                        ),
+              Container(
+                padding: const EdgeInsets.fromLTRB(30, 8, 0,
+                    0), // 16 pixeles desde el borde izquierdo y 16 desde el derecho
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    SizedBox(
+                      height: 100,
+                      child: ListView.builder(
+                        scrollDirection:
+                            Axis.horizontal, // Scrolleable horizontalmente
+                        itemCount: 5, // Cambiado a 8 imágenes
+                        itemBuilder: (context, index) {
+                          return Container(
+                            width: 95,
+                            height: 100,
+                            margin: const EdgeInsets.only(
+                                right:
+                                    15), // Espacio de 12 píxeles entre las cajas
+                            child: ClipRRect(
+                              borderRadius: BorderRadius.circular(
+                                  16), // Bordes con border radius de 16
+                              child: Image.asset(
+                                  'assets/${index + 4}.jpg'), // Carga imágenes desde assets
+                            ),
+                          );
+                        },
                       ),
                     ),
-                  ),
-                  const SizedBox(
-                    width: 8.0,
-                  ),
-                  Expanded(
-                    child: Padding(
-                      padding: const EdgeInsets.fromLTRB(0, 10, 0, 0),
-                      child: Container(
-                        height: 80.0,
-                        decoration: const BoxDecoration(
-                          color: Color.fromARGB(93, 188, 153, 83),
-                          borderRadius: BorderRadius.all(Radius.circular(10.0)),
-                        ),
-                      ),
-                    ),
-                  ),
-                  const SizedBox(
-                    width: 8.0,
-                  ),
-                  Expanded(
-                    child: Padding(
-                      padding: const EdgeInsets.fromLTRB(0, 10, 0, 0),
-                      child: Container(
-                        width: 80.0,
-                        height: 80.0,
-                        decoration: const BoxDecoration(
-                          color: Color.fromARGB(93, 188, 153, 83),
-                          borderRadius: BorderRadius.all(Radius.circular(10.0)),
-                        ),
-                      ),
-                    ),
-                  ),
-                  const SizedBox(
-                    width: 8.0,
-                  ),
-                  Expanded(
-                    child: Padding(
-                      padding: const EdgeInsets.fromLTRB(0, 10, 35, 0),
-                      child: Container(
-                        height: 80.0,
-                        decoration: const BoxDecoration(
-                          color: Color.fromARGB(93, 188, 153, 83),
-                          borderRadius: BorderRadius.all(Radius.circular(10.0)),
-                        ),
-                      ),
-                    ),
-                  ),
-                ],
+                  ],
+                ),
               ),
-              Row(
-                children: [
-                  Expanded(
-                    child: Padding(
-                      padding: const EdgeInsets.fromLTRB(25, 10, 0, 0),
-                      child: Container(
-                        height: 80.0,
-                        decoration: const BoxDecoration(
-                          color: Color.fromARGB(93, 188, 153, 83),
-                          borderRadius: BorderRadius.all(Radius.circular(10.0)),
-                        ),
+
+              const Divider(
+                //para separar del siguiente container, es horizontal
+                height: 20.0, //dos pixeles de alto
+                color: Color.fromARGB(255, 255, 255, 255),
+              ), //color
+
+              Container(
+                padding: const EdgeInsets.fromLTRB(30, 8, 0,
+                    0), // 16 pixeles desde el borde izquierdo y 16 desde el derecho
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    SizedBox(
+                      height: 100,
+                      child: ListView.builder(
+                        scrollDirection:
+                            Axis.horizontal, // Scrolleable horizontalmente
+                        itemCount: 5, // Cambiado a 8 imágenes
+                        itemBuilder: (context, index) {
+                          return Container(
+                            width: 95,
+                            height: 100,
+                            margin: const EdgeInsets.only(
+                                right:
+                                    15), // Espacio de 12 píxeles entre las cajas
+                            child: ClipRRect(
+                              borderRadius: BorderRadius.circular(
+                                  16), // Bordes con border radius de 16
+                              child: Image.asset(
+                                  'assets/${index + 9}.jpg'), // Carga imágenes desde assets
+                            ),
+                          );
+                        },
                       ),
                     ),
-                  ),
-                  const SizedBox(
-                    width: 8.0,
-                  ),
-                  Expanded(
-                    child: Padding(
-                      padding: const EdgeInsets.fromLTRB(0, 10, 0, 0),
-                      child: Container(
-                        height: 80.0,
-                        decoration: const BoxDecoration(
-                          color: Color.fromARGB(93, 188, 153, 83),
-                          borderRadius: BorderRadius.all(Radius.circular(10.0)),
-                        ),
-                      ),
-                    ),
-                  ),
-                  const SizedBox(
-                    width: 8.0,
-                  ),
-                  Expanded(
-                    child: Padding(
-                      padding: const EdgeInsets.fromLTRB(0, 10, 0, 0),
-                      child: Container(
-                        width: 80.0,
-                        height: 80.0,
-                        decoration: const BoxDecoration(
-                          color: Color.fromARGB(93, 188, 153, 83),
-                          borderRadius: BorderRadius.all(Radius.circular(10.0)),
-                        ),
-                      ),
-                    ),
-                  ),
-                  const SizedBox(
-                    width: 8.0,
-                  ),
-                  Expanded(
-                    child: Padding(
-                      padding: const EdgeInsets.fromLTRB(0, 10, 35, 0),
-                      child: Container(
-                        height: 80.0,
-                        decoration: const BoxDecoration(
-                          color: Color.fromARGB(93, 188, 153, 83),
-                          borderRadius: BorderRadius.all(Radius.circular(10.0)),
-                        ),
-                      ),
-                    ),
-                  ),
-                ],
+                  ],
+                ),
               ),
+
               Row(
                 children: [
                   Expanded(
                     child: Padding(
-                      padding: const EdgeInsets.fromLTRB(35, 20, 45, 0),
+                      padding: const EdgeInsets.fromLTRB(50, 20, 35, 0),
                       child: Container(
                         height: 60.0,
                         decoration: const BoxDecoration(
-                          color: Color.fromARGB(213, 163, 123, 44),
+                          image: DecorationImage(
+                            image: AssetImage('assets/rappi_itau.jpg'),
+                            fit: BoxFit.cover,
+                          ),
                           borderRadius: BorderRadius.all(Radius.circular(10.0)),
                         ),
                       ),
@@ -271,11 +240,52 @@ class MyApp extends StatelessWidget {
                       style: TextStyle(
                         color: Color.fromARGB(255, 20, 19, 19),
                         fontSize: 20,
-                        fontWeight: FontWeight.bold,
+                        fontFamily: 'Outfit',
                       ),
                     ),
                   ),
                 ],
+              ),
+
+              const Divider(
+                //para separar del siguiente container, es horizontal
+                height: 16.0, //dos pixeles de alto
+                color: Color.fromARGB(255, 255, 255, 255),
+              ), //color
+
+              Container(
+                padding: const EdgeInsets.fromLTRB(30, 8, 0,
+                    0), // 16 pixeles desde el borde izquierdo y 16 desde el derecho
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    SizedBox(
+                      height: 130,
+                      child: ListView.builder(
+                        scrollDirection:
+                            Axis.horizontal, // Scrolleable horizontalmente
+                        itemCount: 5, // Cambiado a 8 imágenes
+                        itemBuilder: (context, index) {
+                          return Container(
+                            width: 168,
+                            height: 130,
+                            margin: const EdgeInsets.only(
+                                right:
+                                    15), // Espacio de 12 píxeles entre las cajas
+                            child: ClipRRect(
+                              borderRadius: const BorderRadius.only(
+                                topLeft: Radius.circular(10.0),
+                                topRight: Radius.circular(10.0),
+                              ), // Bordes con border radius de 16
+                              child: Image.asset(
+                                  'assets/${index + 14}.jpg'), // Carga imágenes desde assets
+                            ),
+                          );
+                        },
+                      ),
+                    ),
+                  ],
+                ),
               ),
 
               const Divider(
@@ -294,11 +304,52 @@ class MyApp extends StatelessWidget {
                       style: TextStyle(
                         color: Color.fromARGB(255, 20, 19, 19),
                         fontSize: 20,
-                        fontWeight: FontWeight.bold,
+                        fontFamily: 'Outfit',
                       ),
                     ),
                   ),
                 ],
+              ),
+
+              const Divider(
+                //para separar del siguiente container, es horizontal
+                height: 16.0, //dos pixeles de alto
+                color: Color.fromARGB(255, 255, 255, 255),
+              ), //color
+
+              Container(
+                padding: const EdgeInsets.fromLTRB(30, 8, 0,
+                    0), // 16 pixeles desde el borde izquierdo y 16 desde el derecho
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    SizedBox(
+                      height: 130,
+                      child: ListView.builder(
+                        scrollDirection:
+                            Axis.horizontal, // Scrolleable horizontalmente
+                        itemCount: 5, // Cambiado a 8 imágenes
+                        itemBuilder: (context, index) {
+                          return Container(
+                            width: 168,
+                            height: 130,
+                            margin: const EdgeInsets.only(
+                                right:
+                                    15), // Espacio de 12 píxeles entre las cajas
+                            child: ClipRRect(
+                              borderRadius: const BorderRadius.only(
+                                topLeft: Radius.circular(10.0),
+                                topRight: Radius.circular(10.0),
+                              ), // Bordes con border radius de 16
+                              child: Image.asset(
+                                  'assets/${index + 14}.jpg'), // Carga imágenes desde assets
+                            ),
+                          );
+                        },
+                      ),
+                    ),
+                  ],
+                ),
               ),
 
               const Divider(
@@ -311,22 +362,307 @@ class MyApp extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Padding(
-                    padding: EdgeInsets.fromLTRB(25, 0, 0, 0),
+                    padding: EdgeInsets.fromLTRB(25, 8, 0, 0),
                     child: Text(
-                      'Sabores de momento',
+                      'Sabores del momento',
                       style: TextStyle(
                         color: Color.fromARGB(255, 20, 19, 19),
                         fontSize: 20,
-                        fontWeight: FontWeight.bold,
+                        fontFamily: 'Outfit',
                       ),
                     ),
                   ),
                 ],
               ),
+              const Divider(
+                //para separar del siguiente container, es horizontal
+                height: 16.0, //dos pixeles de alto
+                color: Color.fromARGB(255, 255, 255, 255),
+              ), //color
+
+              Container(
+                padding: const EdgeInsets.fromLTRB(30, 0, 0,
+                    0), // 16 pixeles desde el borde izquierdo y 16 desde el derecho
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    SizedBox(
+                      height: 130,
+                      child: ListView.builder(
+                        scrollDirection:
+                            Axis.horizontal, // Scrolleable horizontalmente
+                        itemCount: 5, // Cambiado a 8 imágenes
+                        itemBuilder: (context, index) {
+                          return Container(
+                            width: 168,
+                            height: 130,
+                            margin: const EdgeInsets.only(
+                                right:
+                                    15), // Espacio de 12 píxeles entre las cajas
+                            child: ClipRRect(
+                              borderRadius: const BorderRadius.only(
+                                topLeft: Radius.circular(10.0),
+                                topRight: Radius.circular(10.0),
+                              ), // Bordes con border radius de 16
+                              child: Image.asset(
+                                  'assets/${index + 14}.jpg'), // Carga imágenes desde assets
+                            ),
+                          );
+                        },
+                      ),
+                    ),
+                    const Divider(
+                      //para separar del siguiente container, es horizontal
+                      height: 25.0, //dos pixeles de alto
+                      color: Color.fromARGB(255, 255, 255, 255),
+                    ), //color
+
+                    SizedBox(
+                      child: Row(
+                        children: [
+                          const Icon(Icons.star_border_sharp),
+                          const SizedBox(width: 8),
+                          const Text(
+                            'PRIME',
+                            style: TextStyle(
+                              color: Color.fromARGB(255, 20, 19, 19),
+                              fontSize: 16,
+                              fontFamily: 'Outfit',
+                            ),
+                          ),
+                          const SizedBox(width: 100),
+                          Container(
+                            height: 25,
+                            width: 170,
+                            decoration: BoxDecoration(
+                              color: const Color.fromARGB(255, 76, 225, 126),
+                              borderRadius: BorderRadius.circular(15),
+                            ),
+                            padding: const EdgeInsets.fromLTRB(
+                              16,
+                              4,
+                              4,
+                              0,
+                            ),
+                            child: const Text(
+                              'Probar 30 días gratis',
+                              style: TextStyle(
+                                color: Color.fromARGB(255, 255, 255, 255),
+                                fontFamily: 'Outfit',
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+
+                    const Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Padding(
+                          padding: EdgeInsets.fromLTRB(0, 12, 0, 0),
+                          child: Text(
+                            '13.000 al mes',
+                            style: TextStyle(
+                              color: Color.fromARGB(255, 53, 121, 246),
+                              fontSize: 20,
+                              fontFamily: 'Outfit',
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+
+                    const Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Padding(
+                          padding: EdgeInsets.fromLTRB(0, 0, 0, 0),
+                          child: Text(
+                            'es lo que ahorra en promedio un miembro Prime',
+                            style: TextStyle(
+                              color: Color.fromARGB(255, 0, 0, 0),
+                              fontSize: 12,
+                              fontFamily: 'Outfit-Light',
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+
+                    const Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Padding(
+                          padding: EdgeInsets.fromLTRB(0, 20, 0, 0),
+                          child: Text(
+                            'DESCUBRE LOS BENEFICIOS PRIME PLUS',
+                            style: TextStyle(
+                              color: Color.fromARGB(100, 0, 0, 0),
+                              fontSize: 12,
+                              fontFamily: 'Outfit',
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+
+                    Row(
+                      children: [
+                        Expanded(
+                          child: Padding(
+                            padding: const EdgeInsets.fromLTRB(0, 10, 5, 0),
+                            child: Container(
+                              height: 80.0,
+                              decoration: const BoxDecoration(
+                                color: Color.fromARGB(93, 188, 153, 83),
+                                borderRadius:
+                                    BorderRadius.all(Radius.circular(10.0)),
+                              ),
+                            ),
+                          ),
+                        ),
+                        const SizedBox(
+                          width: 8.0,
+                        ),
+                        Expanded(
+                          child: Padding(
+                            padding: const EdgeInsets.fromLTRB(0, 10, 5, 0),
+                            child: Container(
+                              height: 80.0,
+                              decoration: const BoxDecoration(
+                                color: Color.fromARGB(93, 188, 153, 83),
+                                borderRadius:
+                                    BorderRadius.all(Radius.circular(10.0)),
+                              ),
+                            ),
+                          ),
+                        ),
+                        const SizedBox(
+                          width: 8.0,
+                        ),
+                        Expanded(
+                          child: Padding(
+                            padding: const EdgeInsets.fromLTRB(0, 10, 5, 0),
+                            child: Container(
+                              width: 80.0,
+                              height: 80.0,
+                              decoration: const BoxDecoration(
+                                color: Color.fromARGB(93, 188, 153, 83),
+                                borderRadius:
+                                    BorderRadius.all(Radius.circular(10.0)),
+                              ),
+                            ),
+                          ),
+                        ),
+                        const SizedBox(
+                          width: 8.0,
+                        ),
+                        Expanded(
+                          child: Padding(
+                            padding: const EdgeInsets.fromLTRB(0, 10, 15, 0),
+                            child: Container(
+                              height: 80.0,
+                              decoration: const BoxDecoration(
+                                color: Color.fromARGB(93, 188, 153, 83),
+                                borderRadius:
+                                    BorderRadius.all(Radius.circular(10.0)),
+                              ),
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+
+                    const Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Padding(
+                          padding: EdgeInsets.fromLTRB(0, 20, 0, 0),
+                          child: Text(
+                            'Conoce más de Rappi',
+                            style: TextStyle(
+                              color: Color.fromARGB(255, 0, 0, 0),
+                              fontSize: 20,
+                              fontFamily: 'Outfit',
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ],
+                ),
+              ),
+
+              Container(
+                padding: const EdgeInsets.fromLTRB(30, 8, 0,
+                    0), // 16 pixeles desde el borde izquierdo y 16 desde el derecho
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    SizedBox(
+                      height: 250,
+                      child: ListView.builder(
+                        scrollDirection:
+                            Axis.horizontal, // Scrolleable horizontalmente
+                        itemCount: 3, // Cambiado a 8 imágenes
+                        itemBuilder: (context, index) {
+                          return Container(
+                            width: 250,
+                            height: 350,
+                            margin: const EdgeInsets.only(
+                                right:
+                                    12), // Espacio de 12 píxeles entre las cajas
+                            child: ClipRRect(
+                              borderRadius: BorderRadius.circular(
+                                  16), // Bordes con border radius de 16
+                              child: Image.asset(
+                                  'assets/${index + 1}.jpg'), // Carga imágenes desde assets
+                            ),
+                          );
+                        },
+                      ),
+                    ),
+                  ],
+                ),
+              ),
             ],
           ),
         ),
       ), //Se cierra la estructura de la app
+    );
+  }
+}
+
+class ImageScreen extends StatelessWidget {
+  final String imageName;
+  final List<String> titles = [
+    '1',
+    '2',
+    '3',
+  ];
+
+  ImageScreen({super.key, required this.imageName});
+
+  @override
+  Widget build(BuildContext context) {
+    int imageIndex = int.parse(imageName.split('.').first) -
+        1; // Obtener el índice de la imagen
+    String title = titles[imageIndex];
+
+    return Scaffold(
+      appBar: AppBar(
+        backgroundColor: Colors.white, // Fondo blanco
+        iconTheme: const IconThemeData(color: Colors.black), // Iconos en negro
+        title: Text(
+          title, // Título correspondiente al índice de la imagen
+          style: const TextStyle(color: Colors.black), // Texto negro
+        ),
+      ),
+      body: Center(
+        child: Image.asset(
+            'assets/$imageName'), // Mostrar la imagen a pantalla completa
+      ),
     );
   }
 }

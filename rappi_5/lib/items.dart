@@ -93,7 +93,7 @@ Widget createCustomCard(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Text(
-                    title,
+                    title, //parametro de titulo creado arriba
                     style: const TextStyle(
                       fontWeight: FontWeight.bold,
                       fontSize: 18,
