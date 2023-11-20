@@ -77,6 +77,7 @@ flutter:
    - assets/15.jpg
    - assets/16.jpg
    - assets/17.jpg
+   - assets/mcdo.jpg
 
 
   fonts:
@@ -87,6 +88,14 @@ flutter:
    - family: Outfit-Light
      fonts: 
        - asset: fonts/Outfit-Light.ttf
+   
+   - family: Outfit-Medium
+     fonts: 
+       - asset: fonts/Outfit-Medium.ttf
+
+   - family: Outfit-Regular
+     fonts: 
+       - asset: fonts/Outfit-Regular.ttf
      
   #   - family: Schyler
   #     fonts:
